@@ -10,7 +10,7 @@ CREATE TABLE notes (
 
 
 -- Not the correct version:   DBCC CHECKIDENT (notes, reseed, 999);
--- provided from answer key:   ALTER SEQUENCE notes_id_seq RESTART WITH 1000;
+ALTER SEQUENCE notes_id_seq RESTART WITH 1000;
 
 
 INSERT INTO notes (title, content) VALUES ('Pretend Note 1', 'This is pretend content #1'),
