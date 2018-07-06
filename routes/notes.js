@@ -101,6 +101,9 @@ router.put('/:id', (req, res, next) => {
     updateObj.folder_id = req.body.folderId;
   }
 
+  if (updateObj.folder_id === '') {
+    updateObj.folder_id = null;
+  }
 
   /***** Never trust users - validate input *****/
   if (!updateObj.title) {
@@ -158,6 +161,10 @@ router.post('/', (req, res, next) => {
     'content': content,
     'folder_id': folderId
   };
+
+  if(newItem.folder_id === '') {
+    newItem.folder_id = null;
+  }
 
   let noteId;
 
