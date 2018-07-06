@@ -97,13 +97,10 @@ router.put('/:id', (req, res, next) => {
 
   if (req.body.title) {
     updateObj.title = req.body.title;
-  }
-  if (req.body.content) {
     updateObj.content = req.body.content;
-  }
-  if (req.body.folderId) {
     updateObj.folder_id = req.body.folderId;
   }
+
 
   /***** Never trust users - validate input *****/
   if (!updateObj.title) {
