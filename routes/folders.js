@@ -58,7 +58,6 @@ router.put('/:id', (req, res, next) => {
 
 router.post('/', (req, res, next) => {
   const newName = req.body.name;
-  console.log(newName);
 
   if(!newName) {
     const err = new Error('Must provide valid name for folder');
@@ -70,7 +69,8 @@ router.post('/', (req, res, next) => {
     .insert({'name': `${newName}`})
     .returning(['id', 'name'])
     .then( ([result]) => {
-      res.json(result);
+      res.status(201).json(result);
+      res.location(`http://${req.headers.host}/api/folders/${result.id}`).status(201).json(result);
     })
     .catch(err => next(err));
 });
